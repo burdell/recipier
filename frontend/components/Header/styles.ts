@@ -1,0 +1,12 @@
+import styled from '@emotion/styled';
+
+export const HeaderStyles = styled.div`
+  a {
+    text-decoration: none;
+  }
+`;
+
+export const AppName = styled.h1`
+  display: inline-block;
+  font-size: 4rem;
+`;

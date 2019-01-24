@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "dev": "npm-run-all --parallel debug"
   },
   "keywords": [],
-  "author": "",
+  "author": "nathan griffin",
   "license": "ISC",
   "devDependencies": {
     "@types/dotenv": "^6.1.0",
