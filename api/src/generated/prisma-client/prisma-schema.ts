@@ -57,6 +57,9 @@ type Query {
 type Recipe {
   id: ID!
   name: String!
+  ingredients: [String!]!
+  steps: [String!]!
+  notes: [String!]!
 }
 
 type RecipeConnection {
@@ -65,8 +68,23 @@ type RecipeConnection {
   aggregate: AggregateRecipe!
 }
 
+input RecipeCreateingredientsInput {
+  set: [String!]
+}
+
 input RecipeCreateInput {
   name: String!
+  ingredients: RecipeCreateingredientsInput
+  steps: RecipeCreatestepsInput
+  notes: RecipeCreatenotesInput
+}
+
+input RecipeCreatenotesInput {
+  set: [String!]
+}
+
+input RecipeCreatestepsInput {
+  set: [String!]
 }
 
 type RecipeEdge {
@@ -88,6 +106,9 @@ enum RecipeOrderByInput {
 type RecipePreviousValues {
   id: ID!
   name: String!
+  ingredients: [String!]!
+  steps: [String!]!
+  notes: [String!]!
 }
 
 type RecipeSubscriptionPayload {
@@ -108,12 +129,30 @@ input RecipeSubscriptionWhereInput {
   NOT: [RecipeSubscriptionWhereInput!]
 }
 
+input RecipeUpdateingredientsInput {
+  set: [String!]
+}
+
 input RecipeUpdateInput {
   name: String
+  ingredients: RecipeUpdateingredientsInput
+  steps: RecipeUpdatestepsInput
+  notes: RecipeUpdatenotesInput
 }
 
 input RecipeUpdateManyMutationInput {
   name: String
+  ingredients: RecipeUpdateingredientsInput
+  steps: RecipeUpdatestepsInput
+  notes: RecipeUpdatenotesInput
+}
+
+input RecipeUpdatenotesInput {
+  set: [String!]
+}
+
+input RecipeUpdatestepsInput {
+  set: [String!]
 }
 
 input RecipeWhereInput {

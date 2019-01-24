@@ -4,6 +4,17 @@ type Query {
   recipes: [Recipe]!
 }
 
+type SuccessMessage {
+  message: String!
+}
+
 type Mutation {
-  createRecipe(name: String!): Recipe!
+  createRecipe(
+    name: String!
+    ingredients: [String!]
+    steps: [String!]
+    notes: [String!]
+  ): Recipe!
+
+  deleteRecipe(id: ID!): SuccessMessage!
 }

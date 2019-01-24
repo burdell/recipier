@@ -1,15 +1,28 @@
-import { forwardTo } from 'prisma-binding';
+import { Parent, Args, Ctx, Info } from './types';
+import { RecipeCreateInput } from '../generated/prisma-client';
 
 export const Query = {
-  recipes: (parent, args, ctx, info) => {
-    console.log(ctx.db.query);
-    return ctx.db.recipes({}, info);
+  recipes: (parent: Parent, args: Args, ctx: Ctx, info: Info) => {
+    return ctx.db.recipes({});
   }
-  // recipes: forwardTo('db')
 };
 
 export const Mutation = {
-  async createRecipe(parent, args, ctx, info) {
-    return ctx.db.createRecipe({ ...args }, info);
+  async createRecipe(parent: Parent, args: Args, ctx: Ctx, info: Info) {
+    const recipe: RecipeCreateInput = {
+      name: args.name,
+      ingredients: { set: args.ingredients },
+      notes: { set: args.notes },
+      steps: { set: args.steps }
+    };
+
+    return ctx.db.createRecipe(recipe);
+  },
+
+  async deleteRecipe(parent: Parent, args: Args, ctx: Ctx, info: Info) {
+    const where = { id: args.id };
+    await ctx.db.deleteRecipe(where);
+
+    return { message: 'success' };
   }
 };

@@ -8,5 +8,6 @@ datamodel: datamodel.prisma
 
 hooks:
   post-deploy:
+    - prisma generate
     - graphql get-schema -p prisma
     - graphql codegen

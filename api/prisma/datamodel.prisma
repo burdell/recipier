@@ -6,4 +6,7 @@ type User {
 type Recipe {
   id: ID! @unique
   name: String!
+  ingredients: [String!]
+  steps: [String!]
+  notes: [String!]
 }

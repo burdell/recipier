@@ -160,27 +160,19 @@ export type UserOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface UserCreateInput {
+export interface RecipeCreateInput {
   name: String;
+  ingredients?: RecipeCreateingredientsInput;
+  steps?: RecipeCreatestepsInput;
+  notes?: RecipeCreatenotesInput;
 }
 
 export type RecipeWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
 }>;
 
-export interface RecipeUpdateInput {
-  name?: String;
-}
-
-export interface RecipeSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: RecipeWhereInput;
-  AND?: RecipeSubscriptionWhereInput[] | RecipeSubscriptionWhereInput;
-  OR?: RecipeSubscriptionWhereInput[] | RecipeSubscriptionWhereInput;
-  NOT?: RecipeSubscriptionWhereInput[] | RecipeSubscriptionWhereInput;
+export interface RecipeCreatenotesInput {
+  set?: String[] | String;
 }
 
 export interface RecipeWhereInput {
@@ -217,6 +209,78 @@ export interface RecipeWhereInput {
   NOT?: RecipeWhereInput[] | RecipeWhereInput;
 }
 
+export interface UserCreateInput {
+  name: String;
+}
+
+export interface RecipeCreatestepsInput {
+  set?: String[] | String;
+}
+
+export interface RecipeUpdateManyMutationInput {
+  name?: String;
+  ingredients?: RecipeUpdateingredientsInput;
+  steps?: RecipeUpdatestepsInput;
+  notes?: RecipeUpdatenotesInput;
+}
+
+export interface RecipeUpdateInput {
+  name?: String;
+  ingredients?: RecipeUpdateingredientsInput;
+  steps?: RecipeUpdatestepsInput;
+  notes?: RecipeUpdatenotesInput;
+}
+
+export interface RecipeUpdatenotesInput {
+  set?: String[] | String;
+}
+
+export interface RecipeSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: RecipeWhereInput;
+  AND?: RecipeSubscriptionWhereInput[] | RecipeSubscriptionWhereInput;
+  OR?: RecipeSubscriptionWhereInput[] | RecipeSubscriptionWhereInput;
+  NOT?: RecipeSubscriptionWhereInput[] | RecipeSubscriptionWhereInput;
+}
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface RecipeCreateingredientsInput {
+  set?: String[] | String;
+}
+
+export interface RecipeUpdateingredientsInput {
+  set?: String[] | String;
+}
+
+export interface RecipeUpdatestepsInput {
+  set?: String[] | String;
+}
+
+export interface UserUpdateInput {
+  name?: String;
+}
+
+export interface UserUpdateManyMutationInput {
+  name?: String;
+}
+
+export interface UserSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: UserWhereInput;
+  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+}
+
 export interface UserWhereInput {
   id?: ID_Input;
   id_not?: ID_Input;
@@ -251,79 +315,8 @@ export interface UserWhereInput {
   NOT?: UserWhereInput[] | UserWhereInput;
 }
 
-export interface RecipeCreateInput {
-  name: String;
-}
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface UserUpdateManyMutationInput {
-  name?: String;
-}
-
-export interface RecipeUpdateManyMutationInput {
-  name?: String;
-}
-
-export interface UserSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-}
-
-export interface UserUpdateInput {
-  name?: String;
-}
-
 export interface NodeNode {
   id: ID_Output;
-}
-
-export interface UserEdge {
-  node: User;
-  cursor: String;
-}
-
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface UserPreviousValues {
@@ -340,6 +333,23 @@ export interface UserPreviousValuesPromise
 
 export interface UserPreviousValuesSubscription
   extends Promise<AsyncIterator<UserPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+}
+
+export interface User {
+  id: ID_Output;
+  name: String;
+}
+
+export interface UserPromise extends Promise<User>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+}
+
+export interface UserSubscription
+  extends Promise<AsyncIterator<User>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
@@ -366,25 +376,32 @@ export interface RecipeConnectionSubscription
   aggregate: <T = AggregateRecipeSubscription>() => T;
 }
 
-export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
+export interface RecipePreviousValues {
+  id: ID_Output;
+  name: String;
+  ingredients: String[];
+  steps: String[];
+  notes: String[];
 }
 
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
+export interface RecipePreviousValuesPromise
+  extends Promise<RecipePreviousValues>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  ingredients: () => Promise<String[]>;
+  steps: () => Promise<String[]>;
+  notes: () => Promise<String[]>;
 }
 
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
+export interface RecipePreviousValuesSubscription
+  extends Promise<AsyncIterator<RecipePreviousValues>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  ingredients: () => Promise<AsyncIterator<String[]>>;
+  steps: () => Promise<AsyncIterator<String[]>>;
+  notes: () => Promise<AsyncIterator<String[]>>;
 }
 
 export interface RecipeSubscriptionPayload {
@@ -412,23 +429,46 @@ export interface RecipeSubscriptionPayloadSubscription
   previousValues: <T = RecipePreviousValuesSubscription>() => T;
 }
 
-export interface RecipePreviousValues {
+export interface AggregateRecipe {
+  count: Int;
+}
+
+export interface AggregateRecipePromise
+  extends Promise<AggregateRecipe>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateRecipeSubscription
+  extends Promise<AsyncIterator<AggregateRecipe>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Recipe {
   id: ID_Output;
   name: String;
+  ingredients: String[];
+  steps: String[];
+  notes: String[];
 }
 
-export interface RecipePreviousValuesPromise
-  extends Promise<RecipePreviousValues>,
-    Fragmentable {
+export interface RecipePromise extends Promise<Recipe>, Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
+  ingredients: () => Promise<String[]>;
+  steps: () => Promise<String[]>;
+  notes: () => Promise<String[]>;
 }
 
-export interface RecipePreviousValuesSubscription
-  extends Promise<AsyncIterator<RecipePreviousValues>>,
+export interface RecipeSubscription
+  extends Promise<AsyncIterator<Recipe>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
+  ingredients: () => Promise<AsyncIterator<String[]>>;
+  steps: () => Promise<AsyncIterator<String[]>>;
+  notes: () => Promise<AsyncIterator<String[]>>;
 }
 
 export interface RecipeEdge {
@@ -448,23 +488,6 @@ export interface RecipeEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface User {
-  id: ID_Output;
-  name: String;
-}
-
-export interface UserPromise extends Promise<User>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-}
-
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-}
-
 export interface AggregateUser {
   count: Int;
 }
@@ -481,21 +504,44 @@ export interface AggregateUserSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface Recipe {
-  id: ID_Output;
-  name: String;
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
 }
 
-export interface RecipePromise extends Promise<Recipe>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
 }
 
-export interface RecipeSubscription
-  extends Promise<AsyncIterator<Recipe>>,
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserEdge {
+  node: User;
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface UserSubscriptionPayload {
@@ -539,20 +585,25 @@ export interface BatchPayloadSubscription
   count: () => Promise<AsyncIterator<Long>>;
 }
 
-export interface AggregateRecipe {
-  count: Int;
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
 }
 
-export interface AggregateRecipePromise
-  extends Promise<AggregateRecipe>,
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
     Fragmentable {
-  count: () => Promise<Int>;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
 }
 
-export interface AggregateRecipeSubscription
-  extends Promise<AsyncIterator<AggregateRecipe>>,
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
 }
 
 /*

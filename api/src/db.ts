@@ -1,8 +1,8 @@
 import { Prisma } from './generated/prisma-client';
 
 const db = new Prisma({
-  endpoint: process.env.PRISMA_ENDPOINT,
-  secret: process.env.PRISMA_SECRET,
+  endpoint: process.env.PRISMA_ENDPOINT as string,
+  secret: process.env.PRISMA_SECRET as string,
   debug: true
 });
 
