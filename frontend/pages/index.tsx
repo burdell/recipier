@@ -1,9 +1,5 @@
-import { Layout } from '../components/Layout';
+import { Recipes } from '../components/Recipes';
 
-const Index = () => (
-  <Layout>
-    <div>the recipes</div>
-  </Layout>
-);
+const Index = () => <Recipes />;
 
 export default Index;

@@ -1,8 +1,10 @@
 import { ReactNode, Fragment } from 'react';
 import { Global } from '@emotion/core';
+import Head from 'next/head';
 
 import { Header } from '../Header';
 import { CssReset } from './reset.styles';
+import { LayoutStyles, BodyStyles } from './styles';
 
 interface Props {
   children: ReactNode;
@@ -10,11 +12,17 @@ interface Props {
 
 const Layout = (props: Props) => (
   <Fragment>
+    <Head>
+      <link
+        href="https://fonts.googleapis.com/css?family=Kameron|Raleway"
+        rel="stylesheet"
+      />
+    </Head>
     <Global styles={CssReset} />
-    <div>
+    <LayoutStyles>
       <Header />
-      {props.children}
-    </div>
+      <BodyStyles>{props.children}</BodyStyles>
+    </LayoutStyles>
   </Fragment>
 );
 
