@@ -1,0 +1,18 @@
+{
+  "name": "recipier",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "lerna run --stream --parallel --scope={@recipier/api,@recipier/frontend} dev"
+  },
+  "keywords": [],
+  "author": "nathan griffin <nathanjgriffin@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "lerna": "^2.11.0"
+  }
+}

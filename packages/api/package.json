@@ -1,8 +1,8 @@
 {
-  "name": "api",
+  "name": "@recipier/api",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "prisma": "prisma",
     "start": "nodemon -e ts,graphql -x ts-node src/index.ts",
