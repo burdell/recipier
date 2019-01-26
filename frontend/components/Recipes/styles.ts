@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 
 export const RecipesStyles = styled.div`
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 1rem;
 `;
 
 export const Recipe = styled.div`

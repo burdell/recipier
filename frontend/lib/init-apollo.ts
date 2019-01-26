@@ -31,6 +31,7 @@ export const initApollo = (initialState: NormalizedCacheObject) => {
 
   if (!apolloClient) {
     apolloClient = create(initialState);
-    return apolloClient;
   }
+
+  return apolloClient;
 };
