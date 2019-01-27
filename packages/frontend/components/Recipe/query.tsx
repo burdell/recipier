@@ -22,7 +22,7 @@ const query = gql`
 `;
 class GetRecipe extends Query<RECIPE, RECIPEVariables> {}
 
-export const RecipeContainer = ({ id }: Props) => (
+export const RecipeQuery = ({ id }: Props) => (
   <GetRecipe query={query} variables={{ id }}>
     {({ data, error, loading }) => {
       if (loading) return <div>Loading...</div>;

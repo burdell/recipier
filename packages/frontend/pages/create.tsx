@@ -1,4 +1,4 @@
-import { CreateRecipe } from '../components/RecipeForm';
+import { CreateRecipe } from '../components/RecipeForm/Create';
 
 const Create = () => <CreateRecipe />;
 

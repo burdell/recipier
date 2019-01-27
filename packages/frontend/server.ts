@@ -10,6 +10,10 @@ app
   .then(() => {
     const server = express();
 
+    server.get('/favicon.ico', (_, res) =>
+      res.status(200).sendFile('favicon.ico', { root: __dirname + '/assets/' })
+    );
+
     server.get('/recipe/:id', (req, res) => {
       const actualPage = '/recipe';
       const queryParams = { id: req.params.id };

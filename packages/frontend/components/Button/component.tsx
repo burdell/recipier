@@ -17,5 +17,6 @@ export const Button = styled.button`
   :hover {
     box-shadow: 0px 0px 0px 1px rgba(227, 227, 227, 1);
     color: #eee9e5;
+    outline: none;
   }
 `;

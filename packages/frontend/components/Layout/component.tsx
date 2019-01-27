@@ -17,10 +17,11 @@ const Layout = (props: Props) => (
         href="https://fonts.googleapis.com/css?family=Kameron|Raleway"
         rel="stylesheet"
       />
+      <title>recipier</title>
     </Head>
     <Global styles={CssReset} />
+    <Header />
     <LayoutStyles>
-      <Header />
       <BodyStyles>{props.children}</BodyStyles>
     </LayoutStyles>
   </Fragment>

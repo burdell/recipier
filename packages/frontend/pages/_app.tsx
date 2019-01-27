@@ -1,9 +1,9 @@
 import App, { Container } from 'next/app';
 import React from 'react';
-import withApolloClient from '../lib/with-apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
 import { Layout } from '../components/Layout';
+import withApolloClient from '../lib/with-apollo-client';
 
 class Recipier extends App<any> {
   public render() {

@@ -15,7 +15,7 @@ const query = gql`
 `;
 class AllRecipes extends Query<ALL_RECIPES_QUERY, {}> {}
 
-export class RecipesContainer extends Component<{}, {}> {
+export class RecipesQuery extends Component<{}, {}> {
   public render() {
     return (
       <AllRecipes query={query}>

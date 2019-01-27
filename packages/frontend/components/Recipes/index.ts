@@ -1,1 +1,1 @@
-export { RecipesContainer as Recipes } from './container';
+export { RecipesQuery as Recipes } from './query';

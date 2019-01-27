@@ -1,46 +1,46 @@
 import React from 'react';
 
 import { Recipe as RecipeType } from '@recipier/types';
+import { Title, Section, RecipeContainer, SectionHeader } from './styles';
 
 interface Props {
   recipe: RecipeType;
 }
 
 export const Recipe = ({ recipe }: Props) => (
-  <div>
-    <h1>{recipe.name}</h1>
-
+  <RecipeContainer>
+    <Title>{recipe.name}</Title>
     {recipe.ingredients.length && (
-      <div>
-        <h2>Ingedients</h2>
+      <Section>
+        <SectionHeader>Ingedients</SectionHeader>
         <ul>
           {recipe.ingredients.map(ingredient => (
             <li key={ingredient}>{ingredient}</li>
           ))}
         </ul>
-      </div>
+      </Section>
     )}
 
     {recipe.steps.length && (
-      <div>
-        <h2>Steps</h2>
+      <Section>
+        <SectionHeader>Steps</SectionHeader>
         <ol>
           {recipe.steps.map(step => (
             <li key={step}>{step}</li>
           ))}
         </ol>
-      </div>
+      </Section>
     )}
 
     {recipe.notes.length && (
-      <div>
-        <h2>Notes</h2>
+      <Section>
+        <SectionHeader>Notes</SectionHeader>
         <ol>
           {recipe.steps.map(note => (
             <li key={note}>{note}</li>
           ))}
         </ol>
-      </div>
+      </Section>
     )}
-  </div>
+  </RecipeContainer>
 );

@@ -13,11 +13,10 @@ const Header = () => (
         </a>
       </Link>
     </div>
+
     <div>
       <Link href="/create">
-        <a>
-          <Button>+</Button>
-        </a>
+        <Button>+ create</Button>
       </Link>
     </div>
   </HeaderStyles>

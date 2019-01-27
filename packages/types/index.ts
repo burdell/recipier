@@ -1,3 +1,1 @@
-import { Recipe } from './generated';
-
-export { Recipe };
+export { Recipe, RecipeCreateInput } from './generated';
