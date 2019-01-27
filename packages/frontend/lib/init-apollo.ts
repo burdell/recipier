@@ -17,7 +17,7 @@ function create(initialState: NormalizedCacheObject) {
     connectToDevTools: (process as any).browser,
     ssrMode: !(process as any).browser,
     link: new HttpLink({
-      uri: 'http://localhost:4466',
+      uri: 'http://localhost:4000',
       credentials: 'same-origin'
     }),
     cache: new InMemoryCache().restore(initialState || {})

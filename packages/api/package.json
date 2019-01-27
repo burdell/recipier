@@ -16,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/dotenv": "^6.1.0",
+    "apollo-codegen": "^0.20.2",
     "graphql-cli": "^3.0.6",
     "nodemon": "^1.18.9",
     "npm-run-all": "^4.1.5",
@@ -23,13 +24,11 @@
     "typescript": "^3.2.4"
   },
   "dependencies": {
+    "@recipier/types": "^0.1.0",
     "dotenv": "^6.2.0",
     "graphql": "^14.1.1",
     "graphql-yoga": "^1.17.0",
     "prisma-binding": "^2.2.14",
     "ts-node": "^8.0.1"
-  },
-  "prettier": {
-    "singleQuote": true
   }
 }

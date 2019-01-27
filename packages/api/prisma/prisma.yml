@@ -2,7 +2,9 @@ endpoint: ${env:PRISMA_ENDPOINT}
 
 generate:
   - generator: typescript-client
-    output: ../src/generated/prisma-client/
+    output: ../generated/prisma-client/
+  - generator: typescript-client
+    output: ../../types/generated
 
 datamodel: datamodel.prisma
 

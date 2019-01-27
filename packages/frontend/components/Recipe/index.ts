@@ -1,1 +1,1 @@
-export { Recipe } from './container';
+export { RecipeContainer as Recipe } from './container';
