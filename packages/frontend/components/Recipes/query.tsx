@@ -19,7 +19,7 @@ export class RecipesQuery extends Component<{}, {}> {
   public render() {
     return (
       <AllRecipes query={query}>
-        {({ data, error, loading }) => {
+        {({ data, loading }) => {
           if (loading) return <div>Loading...</div>;
           if (!data) return <div>No data!</div>;
 

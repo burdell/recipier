@@ -18,4 +18,12 @@ type Mutation {
   ): Recipe!
 
   deleteRecipe(id: ID!): SuccessMessage!
+
+  updateRecipe(
+    id: ID!
+    name: String
+    steps: [String]
+    notes: [String]
+    ingredients: [String]
+  ): Recipe!
 }

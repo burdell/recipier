@@ -1,19 +1,16 @@
 import { withRouter, SingletonRouter } from 'next/router';
 
+import { EditRecipe } from '../components/Recipe';
+
 interface Props {
-  router?: SingletonRouter<{ title: string }>;
+  router?: SingletonRouter<{ id: string }>;
 }
 
 const Content = withRouter((props: Props) => {
   const query = props.router && props.router.query;
-  const title = query ? query.title : 'Post Title';
+  const recipeId = query ? query.id : 'GOOOFED';
 
-  return (
-    <div>
-      <h1>{title}</h1>
-      <p>This is the blog post content.</p>
-    </div>
-  );
+  return <EditRecipe id={recipeId} />;
 });
 
 const Page = () => {

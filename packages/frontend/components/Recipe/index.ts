@@ -1,1 +1,1 @@
-export { RecipeQuery as Recipe } from './query';
+export { RecipeQuery as Recipe, EditRecipe } from './query';

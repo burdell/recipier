@@ -14,11 +14,18 @@ app
       res.status(200).sendFile('favicon.ico', { root: __dirname + '/assets/' })
     );
 
+    server.get('/recipe/:id/edit', (req, res) => {
+      const actualPage = '/edit';
+      const queryParams = { id: req.params.id };
+      app.render(req, res, actualPage, queryParams);
+    });
+
     server.get('/recipe/:id', (req, res) => {
       const actualPage = '/recipe';
       const queryParams = { id: req.params.id };
       app.render(req, res, actualPage, queryParams);
     });
+
     server.get('*', (req, res) => handle(req, res));
 
     const PORT = 3000;

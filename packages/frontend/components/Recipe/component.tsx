@@ -1,6 +1,9 @@
 import React from 'react';
+import Link from 'next/link';
 
 import { Recipe as RecipeType } from '@recipier/types';
+import { Button } from '../Button';
+
 import { Title, Section, RecipeContainer, SectionHeader } from './styles';
 
 interface Props {
@@ -9,6 +12,11 @@ interface Props {
 
 export const Recipe = ({ recipe }: Props) => (
   <RecipeContainer>
+    <div>
+      <Link href={`/recipe/${recipe.id}/edit`}>
+        <Button>edit</Button>
+      </Link>
+    </div>
     <Title>{recipe.name}</Title>
     {recipe.ingredients.length && (
       <Section>
