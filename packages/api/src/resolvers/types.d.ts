@@ -1,4 +1,4 @@
-import { Prisma } from '../generated/prisma-client';
+import { Prisma } from '../../prisma/generated/prisma-client';
 
 export type Parent = any;
 export type Args = any;

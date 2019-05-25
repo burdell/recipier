@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Sat Jan 26 2019 16:18:07 GMT-0500 (EST)
+# timestamp: Sat May 25 2019 18:01:40 GMT-0400 (EDT)
 
 type AggregateRecipe {
   count: Int!
@@ -29,8 +29,8 @@ type Mutation {
   deleteRecipe(where: RecipeWhereUniqueInput!): Recipe
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   upsertRecipe(where: RecipeWhereUniqueInput!, create: RecipeCreateInput!, update: RecipeUpdateInput!): Recipe!
-  updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
-  updateManyRecipes(data: RecipeUpdateInput!, where: RecipeWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateManyRecipes(data: RecipeUpdateManyMutationInput!, where: RecipeWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteManyRecipes(where: RecipeWhereInput): BatchPayload!
 }
@@ -100,6 +100,7 @@ input RecipeCreateingredientsInput {
 }
 
 input RecipeCreateInput {
+  id: ID
   name: String!
   ingredients: RecipeCreateingredientsInput
   steps: RecipeCreatestepsInput
@@ -128,10 +129,6 @@ enum RecipeOrderByInput {
   id_DESC
   name_ASC
   name_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-  createdAt_ASC
-  createdAt_DESC
 }
 
 type RecipePreviousValues {
@@ -186,6 +183,13 @@ input RecipeUpdateingredientsInput {
 }
 
 input RecipeUpdateInput {
+  name: String
+  ingredients: RecipeUpdateingredientsInput
+  steps: RecipeUpdatestepsInput
+  notes: RecipeUpdatenotesInput
+}
+
+input RecipeUpdateManyMutationInput {
   name: String
   ingredients: RecipeUpdateingredientsInput
   steps: RecipeUpdatestepsInput
@@ -316,6 +320,7 @@ type UserConnection {
 }
 
 input UserCreateInput {
+  id: ID
   name: String!
 }
 
@@ -333,10 +338,6 @@ enum UserOrderByInput {
   id_DESC
   name_ASC
   name_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-  createdAt_ASC
-  createdAt_DESC
 }
 
 type UserPreviousValues {
@@ -384,6 +385,10 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateInput {
+  name: String
+}
+
+input UserUpdateManyMutationInput {
   name: String
 }
 

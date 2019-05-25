@@ -1,7 +1,23 @@
+import { GraphQLServer } from 'graphql-yoga';
 import { config } from 'dotenv';
 config();
 
-import { createServer } from './server';
+import { Query, Mutation } from './resolvers';
+import { db } from './db';
+
+function createServer() {
+  return new GraphQLServer({
+    typeDefs: 'src/schema.graphql',
+    resolvers: { Query, Mutation },
+    resolverValidationOptions: {
+      requireResolversForResolveType: false
+    },
+    context: req => ({
+      ...req,
+      db
+    })
+  });
+}
 
 const server = createServer();
 server.start(

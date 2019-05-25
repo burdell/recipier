@@ -2,33 +2,28 @@
   "name": "@recipier/api",
   "version": "0.1.0",
   "description": "",
-  "private": true,
+  "main": "index.js",
   "scripts": {
-    "prisma": "prisma",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "prisma deploy",
+    "generate": "prisma generate",
     "start": "nodemon -e ts,graphql -x ts-node src/index.ts",
-    "debug": "nodemon -e ts,graphql -x ts-node src/index.ts",
-    "deploy": "prisma deploy --env-file variables.env",
-    "playground": "graphql playground --dotenv variables.env",
-    "dev": "npm-run-all --parallel debug"
+    "debug": "nodemon -e ts,graphql -x ts-node src/index.ts"
   },
   "keywords": [],
-  "author": "nathan griffin",
+  "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@types/dotenv": "^6.1.0",
-    "apollo-codegen": "^0.20.2",
-    "graphql-cli": "^3.0.6",
-    "nodemon": "^1.18.9",
-    "npm-run-all": "^4.1.5",
-    "prisma": "1.24.0",
-    "typescript": "^3.2.4"
-  },
   "dependencies": {
-    "@recipier/types": "^0.1.0",
-    "dotenv": "^6.2.0",
-    "graphql": "^14.1.1",
-    "graphql-yoga": "^1.17.0",
-    "prisma-binding": "^2.2.14",
-    "ts-node": "^8.0.1"
+    "dotenv": "^8.0.0",
+    "graphql-yoga": "^1.17.4",
+    "prisma-binding": "^2.3.11",
+    "ts-node": "^8.1.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "apollo-codegen": "^0.20.2",
+    "graphql-cli": "^3.0.11",
+    "nodemon": "^1.19.1",
+    "typescript": "^3.4.5"
   }
 }

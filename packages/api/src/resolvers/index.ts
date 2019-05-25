@@ -2,11 +2,11 @@ import { Parent, Args, Ctx, Info } from './types';
 import {
   RecipeCreateInput,
   RecipeUpdateInput
-} from '../generated/prisma-client';
+} from '../../prisma/generated/prisma-client';
 
 export const Query = {
   recipes: (parent: Parent, args: Args, ctx: Ctx, info: Info) => {
-    return ctx.db.recipes({});
+    return ctx.db.recipes();
   },
   recipe: (parent: Parent, { id }: Args, ctx: Ctx, info: Info) => {
     return ctx.db.recipe({ id });

@@ -1,12 +1,12 @@
 type User {
-  id: ID! @unique
+  id: ID! @id
   name: String!
 }
 
 type Recipe {
-  id: ID! @unique
+  id: ID! @id
   name: String!
-  ingredients: [String!]
-  steps: [String!]
-  notes: [String!]
+  ingredients: [String!]! @scalarList(strategy: RELATION)
+  steps: [String!]! @scalarList(strategy: RELATION)
+  notes: [String!]! @scalarList(strategy: RELATION)
 }
