@@ -7,7 +7,9 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "lerna run --stream --parallel --scope={@recipier/api,@recipier/frontend} dev"
+    "dev": "lerna run --stream --parallel --scope={@recipier/api,@recipier/frontend} dev",
+    "dev-frontend": "lerna run --scope={@recipier/frontend} dev",
+    "dev-api": "lerna run --stream --parallel --scope=@recipier/api dev"
   },
   "keywords": [],
   "author": "nathan griffin <nathanjgriffin@gmail.com>",

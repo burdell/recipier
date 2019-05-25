@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"yarn dev-server\"",
     "dev-server": "ts-node -O '{\"module\": \"commonjs\"}' server.ts",
-    "dev-apollo": "apollo codegen:generate apollo-types --endpoint=http://localhost:4000 --target=typescript --includes=**/*.tsx --watch",
     "build": "next build",
-    "start": "NODE_ENV=production ts-node -O '{\"module\": \"commonjs\"}'  start"
+    "start": "NODE_ENV=production ts-node -O '{\"module\": \"commonjs\"}'  start",
+    "generate": "gql-gen"
   },
   "keywords": [],
   "author": "nathan griffin",
