@@ -1,1 +1,1 @@
-export { Recipe, RecipeCreateInput } from './generated';
+export * from './Graphql';

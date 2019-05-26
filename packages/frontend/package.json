@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"yarn dev-server\"",
+    "dev": "concurrently \"yarn dev-server\" \"yarn generate --watch\"",
     "dev-server": "ts-node -O '{\"module\": \"commonjs\"}' server.ts",
     "build": "next build",
     "start": "NODE_ENV=production ts-node -O '{\"module\": \"commonjs\"}'  start",

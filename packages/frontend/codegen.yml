@@ -2,7 +2,7 @@ schema: http://localhost:4000/
 documents: './components/**/*.graphql'
 overwrite: true
 generates:
-  ../types/Graphql.tsx:
+  ./components/generated/Graphql.tsx:
     config:
       noNamespaces: true
     plugins:

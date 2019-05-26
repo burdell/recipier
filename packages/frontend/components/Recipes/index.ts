@@ -1,1 +1,1 @@
-export { RecipesQuery as Recipes } from './query';
+export { Recipes } from './component';
