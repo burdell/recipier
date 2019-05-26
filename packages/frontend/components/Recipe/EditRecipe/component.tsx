@@ -1,130 +1,120 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {
+  GetRecipeRecipe,
+  UpdateRecipeVariables
+} from '../../generated/Graphql';
+import { Title, Section, RecipeContainer, SectionHeader } from '../styles';
+import { Button } from '../../Button';
 
 interface Props {
-  id: string;
+  recipe: GetRecipeRecipe;
+  onSave(updates: UpdateRecipeVariables, finishEdit: boolean): void;
 }
 
-export const EditRecipe = ({  }: Props) => {
-  return <div>Edit Recipe</div>;
+export const EditRecipe = ({ recipe, onSave }: Props) => {
+  const [recipeUpdates, setUpdates] = useState<UpdateRecipeVariables>({
+    id: recipe.id,
+    name: recipe.name,
+    ingredients: [...(recipe.ingredients || [])],
+    notes: [...(recipe.notes || [])],
+    steps: [...(recipe.steps || [])]
+  });
+
+  const mergeUpdates = (updates: Partial<UpdateRecipeVariables>) => {
+    setUpdates({ ...recipeUpdates, ...updates });
+  };
+
+  const editList = (list: string[], value: string, index: number) => {
+    const newList = [...list];
+    newList[index] = value;
+    return newList;
+  };
+
+  const addToList = (list: string[] | null | undefined) => {
+    let newList = list ? [...list] : [];
+    newList.push('');
+    return newList;
+  };
+
+  const { name, ingredients, steps, notes } = recipeUpdates;
+  return (
+    <RecipeContainer>
+      <Title>
+        <input
+          defaultValue={name || ''}
+          onChange={e => mergeUpdates({ name: e.target.value })}
+          placeholder="Recipe name"
+        />
+      </Title>
+      <Section>
+        <SectionHeader>Ingredients</SectionHeader>
+        <div>
+          {ingredients &&
+            ingredients.map((ing, i) => (
+              <div key={i}>
+                <input
+                  defaultValue={ing}
+                  placeholder="Add an ingredient"
+                  onChange={e => {
+                    mergeUpdates({
+                      ingredients: editList(ingredients, e.target.value, i)
+                    });
+                  }}
+                />
+              </div>
+            ))}
+        </div>
+        <Button
+          onClick={() => mergeUpdates({ ingredients: addToList(ingredients) })}
+        >
+          +
+        </Button>
+      </Section>
+      <Section>
+        <SectionHeader>Steps</SectionHeader>
+        <div>
+          {steps &&
+            steps.map((step, i) => (
+              <div key={i}>
+                <input
+                  defaultValue={step}
+                  placeholder="Add a step"
+                  onChange={e => {
+                    mergeUpdates({
+                      steps: editList(steps, e.target.value, i)
+                    });
+                  }}
+                />
+              </div>
+            ))}
+        </div>
+        <Button onClick={() => mergeUpdates({ steps: addToList(steps) })}>
+          +
+        </Button>
+      </Section>
+      <Section>
+        <SectionHeader>Notes</SectionHeader>
+        <div>
+          {notes &&
+            notes.map((note, i) => (
+              <div key={i}>
+                <input
+                  defaultValue={note}
+                  placeholder="Add a step"
+                  onChange={e => {
+                    mergeUpdates({
+                      notes: editList(notes, e.target.value, i)
+                    });
+                  }}
+                />
+              </div>
+            ))}
+        </div>
+        <Button onClick={() => mergeUpdates({ notes: addToList(notes) })}>
+          +
+        </Button>
+      </Section>
+      <Button onClick={() => onSave(recipeUpdates, true)}>Save Recipe</Button>
+    </RecipeContainer>
+  );
 };
-
-// import { Recipe as RecipeType } from '@recipier/types';
-// import { Title, Section, RecipeContainer, SectionHeader } from '../styles';
-// import { Button } from '../../Button';
-
-// interface Props {
-//   recipe: RecipeType;
-//   onSave(r: RecipeType): void;
-// }
-
-// type State = Partial<RecipeType>;
-
-// export class EditRecipe extends Component<Props, State> {
-//   public readonly state: State = {};
-
-//   public render() {
-//     const { recipe } = this.props;
-
-//     const ingredients = this.state.ingredients || recipe.ingredients;
-//     const steps = this.state.steps || recipe.steps;
-//     const notes = this.state.notes || recipe.notes;
-
-//     return (
-//       <RecipeContainer>
-//         <Title>
-//           <input
-//             defaultValue={recipe.name}
-//             onChange={e => this.setState({ name: e.target.value })}
-//             placeholder="Recipe name"
-//           />
-//         </Title>
-//         <Section>
-//           <SectionHeader>Ingredients</SectionHeader>
-//           <div>
-//             {ingredients.length &&
-//               ingredients.map((ing, i) => (
-//                 <div key={i}>
-//                   <input
-//                     defaultValue={ing}
-//                     placeholder="Add an ingredient"
-//                     onChange={e => {
-//                       this.editList('ingredients', e.target.value, i);
-//                     }}
-//                   />
-//                 </div>
-//               ))}
-//           </div>
-//           <Button onClick={() => this.addToList('ingredients')}>+</Button>
-//         </Section>
-//         <Section>
-//           <SectionHeader>Steps</SectionHeader>
-//           <div>
-//             {steps.length &&
-//               steps.map((step, i) => (
-//                 <div key={i}>
-//                   <input
-//                     defaultValue={step}
-//                     placeholder="Add a step"
-//                     onChange={e => {
-//                       this.editList('steps', e.target.value, i);
-//                     }}
-//                   />
-//                 </div>
-//               ))}
-//           </div>
-//           <Button onClick={() => this.addToList('steps')}>+</Button>
-//         </Section>
-//         <Section>
-//           <SectionHeader>Notes</SectionHeader>
-//           <div>
-//             {notes.length &&
-//               notes.map((note, i) => (
-//                 <div key={i}>
-//                   <input
-//                     defaultValue={note}
-//                     placeholder="Add a step"
-//                     onChange={e => {
-//                       this.editList('notes', e.target.value, i);
-//                     }}
-//                   />
-//                 </div>
-//               ))}
-//           </div>
-//           <Button onClick={() => this.addToList('notes')}>+</Button>
-//         </Section>
-//         <Button onClick={this.saveRecipe}>Save Recipe</Button>
-//       </RecipeContainer>
-//     );
-//   }
-
-//   private editList = (
-//     list: 'ingredients' | 'notes' | 'steps',
-//     value: string,
-//     index: number
-//   ) => {
-//     let currentList = this.state[list];
-//     if (!currentList) {
-//       currentList = this.props.recipe[list] || [];
-//     }
-
-//     const updatedList = [...currentList];
-//     updatedList[index] = value;
-//     this.setState({ [list]: updatedList });
-//   };
-
-//   private addToList = (list: 'ingredients' | 'notes' | 'steps') => {
-//     let currentList = this.state[list];
-//     if (!currentList) {
-//       currentList = this.props.recipe[list] || [];
-//     }
-
-//     const updatedList = [...currentList];
-//     updatedList.push('');
-//     this.setState({ [list]: updatedList });
-//   };
-
-//   public saveRecipe = () => {
-//     const update = { ...this.props.recipe, ...this.state };
-//     this.props.onSave(update);
-//   };
-// }

@@ -45,7 +45,7 @@ export const Recipe = ({ recipe }: Props) => {
         <Section>
           <SectionHeader>Notes</SectionHeader>
           <ol>
-            {recipe.steps.map(note => (
+            {recipe.notes.map(note => (
               <li key={note}>{note}</li>
             ))}
           </ol>

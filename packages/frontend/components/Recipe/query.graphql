@@ -7,3 +7,21 @@ query GetRecipe($recipeId: ID!) {
     notes
   }
 }
+
+mutation UpdateRecipe(
+  $id: ID!
+  $name: String
+  $steps: [String]
+  $notes: [String]
+  $ingredients: [String]
+) {
+  updateRecipe(
+    id: $id
+    name: $name
+    steps: $steps
+    notes: $notes
+    ingredients: $ingredients
+  ) {
+    id
+  }
+}

@@ -1,1 +1,1 @@
-export { EditRecipe } from './component';
+export { EditRecipe } from './container';
