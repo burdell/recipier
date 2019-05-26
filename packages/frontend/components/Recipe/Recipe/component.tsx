@@ -8,15 +8,17 @@ import { Title, Section, RecipeContainer, SectionHeader } from '../styles';
 
 interface Props {
   recipe: GetRecipeRecipe;
+  onDelete(): void;
 }
 
-export const Recipe = ({ recipe }: Props) => {
+export const Recipe = ({ recipe, onDelete }: Props) => {
   return (
     <RecipeContainer>
       <div>
         <Link href={`/recipe/${recipe.id}/edit`}>
           <Button>edit</Button>
         </Link>
+        <Button onClick={onDelete}>delete</Button>
       </div>
       <Title>{recipe.name}</Title>
       {recipe.ingredients.length && (

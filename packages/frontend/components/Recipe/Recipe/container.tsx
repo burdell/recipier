@@ -1,6 +1,10 @@
 import React from 'react';
+import Router from 'next/router';
 
-import { GetRecipeComponent } from '../../generated/Graphql';
+import {
+  GetRecipeComponent,
+  DeleteRecipeComponent
+} from '../../generated/Graphql';
 import { Recipe as RecipeComponent } from './component';
 
 interface Props {
@@ -14,7 +18,19 @@ export const Recipe = ({ id }: Props) => {
         const recipe = data && data.recipe;
         if (!recipe) return null;
 
-        return <RecipeComponent recipe={recipe} />;
+        return (
+          <DeleteRecipeComponent>
+            {deleteRecipe => (
+              <RecipeComponent
+                onDelete={async () => {
+                  await deleteRecipe({ variables: { id } });
+                  Router.push('/');
+                }}
+                recipe={recipe}
+              />
+            )}
+          </DeleteRecipeComponent>
+        );
       }}
     </GetRecipeComponent>
   );

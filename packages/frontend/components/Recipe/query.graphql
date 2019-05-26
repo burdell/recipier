@@ -41,3 +41,9 @@ mutation CreateRecipe(
     id
   }
 }
+
+mutation DeleteRecipe($id: ID!) {
+  deleteRecipe(id: $id) {
+    message
+  }
+}

@@ -67,6 +67,22 @@ export type CreateRecipeCreateRecipe = {
   id: string;
 };
 
+export type DeleteRecipeVariables = {
+  id: string;
+};
+
+export type DeleteRecipeMutation = {
+  __typename?: 'Mutation';
+
+  deleteRecipe: DeleteRecipeDeleteRecipe;
+};
+
+export type DeleteRecipeDeleteRecipe = {
+  __typename?: 'SuccessMessage';
+
+  message: string;
+};
+
 export type GetRecipesVariables = {};
 
 export type GetRecipesQuery = {
@@ -249,6 +265,52 @@ export function CreateRecipeHOC<TProps, TChildProps = any>(
     CreateRecipeVariables,
     CreateRecipeProps<TChildProps>
   >(CreateRecipeDocument, operationOptions);
+}
+export const DeleteRecipeDocument = gql`
+  mutation DeleteRecipe($id: ID!) {
+    deleteRecipe(id: $id) {
+      message
+    }
+  }
+`;
+export class DeleteRecipeComponent extends React.Component<
+  Partial<
+    ReactApollo.MutationProps<DeleteRecipeMutation, DeleteRecipeVariables>
+  >
+> {
+  render() {
+    return (
+      <ReactApollo.Mutation<DeleteRecipeMutation, DeleteRecipeVariables>
+        mutation={DeleteRecipeDocument}
+        {...(this as any)['props'] as any}
+      />
+    );
+  }
+}
+export type DeleteRecipeProps<TChildProps = any> = Partial<
+  ReactApollo.MutateProps<DeleteRecipeMutation, DeleteRecipeVariables>
+> &
+  TChildProps;
+export type DeleteRecipeMutationFn = ReactApollo.MutationFn<
+  DeleteRecipeMutation,
+  DeleteRecipeVariables
+>;
+export function DeleteRecipeHOC<TProps, TChildProps = any>(
+  operationOptions:
+    | ReactApollo.OperationOption<
+        TProps,
+        DeleteRecipeMutation,
+        DeleteRecipeVariables,
+        DeleteRecipeProps<TChildProps>
+      >
+    | undefined
+) {
+  return ReactApollo.graphql<
+    TProps,
+    DeleteRecipeMutation,
+    DeleteRecipeVariables,
+    DeleteRecipeProps<TChildProps>
+  >(DeleteRecipeDocument, operationOptions);
 }
 export const GetRecipesDocument = gql`
   query GetRecipes {
