@@ -48,6 +48,25 @@ export type UpdateRecipeUpdateRecipe = {
   id: string;
 };
 
+export type CreateRecipeVariables = {
+  name: string;
+  steps?: Maybe<string[]>;
+  notes?: Maybe<string[]>;
+  ingredients?: Maybe<string[]>;
+};
+
+export type CreateRecipeMutation = {
+  __typename?: 'Mutation';
+
+  createRecipe: CreateRecipeCreateRecipe;
+};
+
+export type CreateRecipeCreateRecipe = {
+  __typename?: 'Recipe';
+
+  id: string;
+};
+
 export type GetRecipesVariables = {};
 
 export type GetRecipesQuery = {
@@ -174,6 +193,62 @@ export function UpdateRecipeHOC<TProps, TChildProps = any>(
     UpdateRecipeVariables,
     UpdateRecipeProps<TChildProps>
   >(UpdateRecipeDocument, operationOptions);
+}
+export const CreateRecipeDocument = gql`
+  mutation CreateRecipe(
+    $name: String!
+    $steps: [String!]
+    $notes: [String!]
+    $ingredients: [String!]
+  ) {
+    createRecipe(
+      name: $name
+      steps: $steps
+      notes: $notes
+      ingredients: $ingredients
+    ) {
+      id
+    }
+  }
+`;
+export class CreateRecipeComponent extends React.Component<
+  Partial<
+    ReactApollo.MutationProps<CreateRecipeMutation, CreateRecipeVariables>
+  >
+> {
+  render() {
+    return (
+      <ReactApollo.Mutation<CreateRecipeMutation, CreateRecipeVariables>
+        mutation={CreateRecipeDocument}
+        {...(this as any)['props'] as any}
+      />
+    );
+  }
+}
+export type CreateRecipeProps<TChildProps = any> = Partial<
+  ReactApollo.MutateProps<CreateRecipeMutation, CreateRecipeVariables>
+> &
+  TChildProps;
+export type CreateRecipeMutationFn = ReactApollo.MutationFn<
+  CreateRecipeMutation,
+  CreateRecipeVariables
+>;
+export function CreateRecipeHOC<TProps, TChildProps = any>(
+  operationOptions:
+    | ReactApollo.OperationOption<
+        TProps,
+        CreateRecipeMutation,
+        CreateRecipeVariables,
+        CreateRecipeProps<TChildProps>
+      >
+    | undefined
+) {
+  return ReactApollo.graphql<
+    TProps,
+    CreateRecipeMutation,
+    CreateRecipeVariables,
+    CreateRecipeProps<TChildProps>
+  >(CreateRecipeDocument, operationOptions);
 }
 export const GetRecipesDocument = gql`
   query GetRecipes {

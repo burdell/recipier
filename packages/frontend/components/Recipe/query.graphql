@@ -25,3 +25,19 @@ mutation UpdateRecipe(
     id
   }
 }
+
+mutation CreateRecipe(
+  $name: String!
+  $steps: [String!]
+  $notes: [String!]
+  $ingredients: [String!]
+) {
+  createRecipe(
+    name: $name
+    steps: $steps
+    notes: $notes
+    ingredients: $ingredients
+  ) {
+    id
+  }
+}

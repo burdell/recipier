@@ -4,8 +4,8 @@ import Router from 'next/router';
 import {
   GetRecipeComponent,
   UpdateRecipeComponent
-} from '../../generated/Graphql';
-import { EditRecipe as EditComponent } from './component';
+} from '../generated/Graphql';
+import { RecipeForm } from './RecipeForm';
 
 interface Props {
   id: string;
@@ -21,12 +21,12 @@ export const EditRecipe = ({ id }: Props) => {
         return (
           <UpdateRecipeComponent>
             {updateRecipe => (
-              <EditComponent
+              <RecipeForm
                 recipe={recipe}
                 onSave={async (updates, finishedEdit = false) => {
-                  await updateRecipe({ variables: updates });
+                  await updateRecipe({ variables: { id: id, ...updates } });
                   if (finishedEdit) {
-                    Router.push(`/recipe/${updates.id}`);
+                    Router.push(`/recipe/${id}`);
                   }
                 }}
               />

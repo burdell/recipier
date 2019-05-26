@@ -1,26 +1,22 @@
 import React, { useState } from 'react';
-import {
-  GetRecipeRecipe,
-  UpdateRecipeVariables
-} from '../../generated/Graphql';
-import { Title, Section, RecipeContainer, SectionHeader } from '../styles';
-import { Button } from '../../Button';
+import { Title, Section, RecipeContainer, SectionHeader } from './styles';
+import { Button } from '../Button';
+import { Recipe } from './types';
 
 interface Props {
-  recipe: GetRecipeRecipe;
-  onSave(updates: UpdateRecipeVariables, finishEdit: boolean): void;
+  recipe: Recipe;
+  onSave(updates: Recipe, finishEdit: boolean): void;
 }
 
-export const EditRecipe = ({ recipe, onSave }: Props) => {
-  const [recipeUpdates, setUpdates] = useState<UpdateRecipeVariables>({
-    id: recipe.id,
+export const RecipeForm = ({ recipe, onSave }: Props) => {
+  const [recipeUpdates, setUpdates] = useState<Recipe>({
     name: recipe.name,
     ingredients: [...(recipe.ingredients || [])],
     notes: [...(recipe.notes || [])],
     steps: [...(recipe.steps || [])]
   });
 
-  const mergeUpdates = (updates: Partial<UpdateRecipeVariables>) => {
+  const mergeUpdates = (updates: Partial<Recipe>) => {
     setUpdates({ ...recipeUpdates, ...updates });
   };
 
