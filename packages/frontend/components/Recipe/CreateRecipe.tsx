@@ -10,8 +10,11 @@ export const CreateRecipe = () => (
       <RecipeForm
         recipe={{ name: '', ingredients: [], steps: [], notes: [] }}
         onSave={async recipe => {
-          await createRecipe({ variables: recipe });
-          Router.push('/');
+          const result = await createRecipe({ variables: recipe });
+          if (result && result.data) {
+            const id = result.data.createRecipe.id;
+            Router.push(`/recipe/${id}`);
+          }
         }}
       />
     )}

@@ -3,7 +3,6 @@ import { config } from 'dotenv';
 config();
 
 import { Query, Mutation } from './resolvers';
-import { db } from './db';
 
 function createServer() {
   return new GraphQLServer({
@@ -11,11 +10,7 @@ function createServer() {
     resolvers: { Query, Mutation },
     resolverValidationOptions: {
       requireResolversForResolveType: false
-    },
-    context: req => ({
-      ...req,
-      db
-    })
+    }
   });
 }
 
