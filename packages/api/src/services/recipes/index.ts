@@ -1,9 +1,9 @@
-import { db } from '../db';
+import { db } from '../../db';
 import {
   RecipeCreateInput,
   Recipe,
   RecipeUpdateInput
-} from '../../prisma/generated/prisma-client';
+} from '../../../prisma/generated/prisma-client';
 
 export function getRecipes() {
   return db.recipes();

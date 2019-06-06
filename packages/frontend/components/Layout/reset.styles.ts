@@ -73,11 +73,6 @@ export const CssReset = css`
     border-spacing: 0;
   }
 
-  ol,
-  ul {
-      list-style: none;
-  }
-
   img,
   video {
       max-width: 100%;

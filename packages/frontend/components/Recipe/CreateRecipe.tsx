@@ -16,6 +16,7 @@ export const CreateRecipe = () => (
             Router.push(`/recipe/${id}`);
           }
         }}
+        onCancel={() => Router.push(`/`)}
       />
     )}
   </CreateRecipeComponent>

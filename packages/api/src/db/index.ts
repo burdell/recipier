@@ -1,4 +1,4 @@
-import { Prisma } from '../prisma/generated/prisma-client';
+import { Prisma } from '../../prisma/generated/prisma-client';
 
 const db = new Prisma({
   endpoint: process.env.PRISMA_ENDPOINT as string,

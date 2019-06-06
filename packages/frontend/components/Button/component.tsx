@@ -1,22 +1,23 @@
 import styled from '@emotion/styled';
 
+import { slate, lightBlue } from '../colors';
+
 export const Button = styled.button`
   border: 0;
   background: none;
   box-shadow: none;
-  border-radius: 5px;
-  background-color: #2e4347;
-  color: #fff;
+  border-radius: 3px;
+  color: ${slate};
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 0px 0px 0px 1px rgba(227, 227, 227, 1);
 
   :focus {
     outline: none;
   }
 
   :hover {
-    box-shadow: 0px 0px 0px 1px rgba(227, 227, 227, 1);
-    color: #eee9e5;
     outline: none;
+    background-color: ${lightBlue};
   }
 `;

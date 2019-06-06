@@ -29,6 +29,7 @@ export const EditRecipe = ({ id }: Props) => {
                     Router.push(`/recipe/${id}`);
                   }
                 }}
+                onCancel={() => Router.push(`/recipe/${id}`)}
               />
             )}
           </UpdateRecipeComponent>

@@ -1,15 +1,16 @@
 import styled from '@emotion/styled';
 
+import { slate } from '../colors';
+
 export const HeaderStyles = styled.div`
   font-family: 'Kameron';
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #fff;
-  background-color: #4d6160;
-  box-shadow: 0px 2px 5px 0px rgba(204, 204, 204, 1);
-  padding: 0.5em;
+  color: ${slate};
+  box-shadow: 0px 2px 3px 0px rgba(230, 230, 230, 1);
+  padding: 0 0.5rem;
 
   a {
     text-decoration: none;
