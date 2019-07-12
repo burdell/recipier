@@ -22,7 +22,7 @@ export const Recipe = ({ recipe, onDelete }: Props) => {
   return (
     <PageContainer>
       <RecipeActions>
-        <Link href={`/recipe/${recipe.id}/edit`}>
+        <Link href="/edit/[id]" as={`/edit/${recipe.id}`}>
           <Button>edit</Button>
         </Link>
         <Button onClick={onDelete}>delete</Button>

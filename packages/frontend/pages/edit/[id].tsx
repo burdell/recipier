@@ -1,14 +1,14 @@
-import { withRouter, SingletonRouter } from 'next/router';
+import { withRouter, NextRouter } from 'next/router';
 
-import { EditRecipe } from '../components/Recipe';
+import { EditRecipe } from '../../components/Recipe';
 
 interface Props {
-  router?: SingletonRouter<{ id: string }>;
+  router?: NextRouter;
 }
 
 const Content = withRouter((props: Props) => {
   const query = props.router && props.router.query;
-  const recipeId = query ? query.id : 'GOOOFED';
+  const recipeId: string = query ? (query.id as string) : 'GOOOFED';
 
   return <EditRecipe id={recipeId} />;
 });

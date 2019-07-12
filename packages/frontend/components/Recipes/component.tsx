@@ -12,8 +12,8 @@ export const Recipes = ({ recipes }: Props) =>
   recipes && recipes.length ? (
     <RecipesStyles>
       {recipes.map((recipe, index) => (
-        <Link href={`/recipe/${recipe!.id}`} key={index}>
-          <Recipe>{recipe!.name}</Recipe>
+        <Link href="/recipe/[id]" as={`/recipe/${recipe.id}`} key={index}>
+          <Recipe>{recipe.name}</Recipe>
         </Link>
       ))}
     </RecipesStyles>

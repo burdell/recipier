@@ -1,12 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 import { getDataFromTree } from 'react-apollo';
-import { RouterProps } from 'next/router';
+import { Router } from 'next/router';
 
 import { initApollo } from './init-apollo';
 
 export default (App: any) => {
-  return class Apollo extends React.Component<RouterProps, {}> {
+  return class Apollo extends React.Component<Router, {}> {
     static displayName = 'withApollo(App)';
     private apolloClient: any;
 

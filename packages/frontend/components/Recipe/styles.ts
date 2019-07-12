@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { slate } from '../colors';
 
 export const PageContainer = styled.div`
   display: flex;
