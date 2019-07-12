@@ -1,16 +1,32 @@
 import React from 'react';
-
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
-storiesOf('Button', module)
-  .add('with text', () => (
-    <button onClick={action('clicked')}>Hello Button</button>
-  ))
-  .add('with some emoji', () => (
-    <button onClick={action('clicked')}>
-      <span role="img" aria-label="so cool">
-        😀 😎 👍 💯
-      </span>
-    </button>
-  ));
+import { ColorGroup } from '../design/types';
+import * as colors from '../design/colors';
+import { ColorRow } from './ColorRow';
+
+const colorGroups: ColorGroup[] = Object.keys(colors as any).reduce(
+  (acc, colorGroupName: any) => {
+    const colorGroup = (colors as any)[colorGroupName];
+    const group: ColorGroup = {
+      name: colorGroupName,
+      colors: Object.keys(colorGroup).reduce((acc, colorName) => {
+        const color = colorGroup[colorName];
+        (acc as any).push({ name: colorName, color });
+        return acc;
+      }, [])
+    };
+
+    (acc as any).push(group);
+    return acc;
+  },
+  []
+);
+
+storiesOf('Colors', module).add('colors text', () => (
+  <div>
+    {colorGroups.map(group => (
+      <ColorRow group={group} />
+    ))}
+  </div>
+));
