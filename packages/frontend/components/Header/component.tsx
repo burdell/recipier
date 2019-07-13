@@ -1,6 +1,7 @@
+import React from 'react';
 import Link from 'next/link';
 
-import { Button } from '../Button';
+import { LinkButton } from '../Button';
 
 import { HeaderStyles, AppName } from './styles';
 
@@ -15,9 +16,9 @@ const Header = () => (
     </div>
 
     <div>
-      <Link href="/create">
-        <Button>+ create</Button>
-      </Link>
+      <LinkButton href="/create">create</LinkButton>
+      <LinkButton href="/create">import</LinkButton>
+      <LinkButton href="/create">calendar</LinkButton>
     </div>
   </HeaderStyles>
 );
