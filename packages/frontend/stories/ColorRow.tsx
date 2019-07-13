@@ -5,10 +5,10 @@ import { ColorGroup } from '../design/types';
 function swatchCss(css: CSSProperties): CSSProperties {
   return {
     ...css,
-    borderRadius: '50%',
+    borderRadius: '10px',
     height: '50px',
     width: '50px',
-    margin: '0 1.5rem'
+    margin: '0.2rem 1.5rem'
   };
 }
 
