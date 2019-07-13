@@ -5,10 +5,11 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"yarn start\" \"yarn generate --watch\"",
+    "dev": "concurrently \"yarn next-dev\" \"yarn generate --watch\"",
     "dev-server": "ts-node -O '{\"module\": \"commonjs\"}' server.ts",
     "build": "next build",
     "start": "next start",
+    "next-dev": "next dev",
     "generate": "gql-gen",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -24,6 +25,7 @@
     "@types/storybook__react": "^4.0.2",
     "apollo": "^2.3.1",
     "apollo-boost": "^0.1.27",
+    "core-js": "^2",
     "express": "^4.16.4",
     "glamor": "^2.20.40",
     "graphql": "^14.1.1",

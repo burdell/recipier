@@ -23,7 +23,7 @@ const colorGroups: ColorGroup[] = Object.keys(colors as any).reduce(
   []
 );
 
-storiesOf('Colors', module).add('colors text', () => (
+storiesOf('Colors', module).add('palette', () => (
   <div>
     {colorGroups.map(group => (
       <ColorRow group={group} />
