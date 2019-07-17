@@ -8,7 +8,6 @@ import { primary, tertiary } from '../../design/colors';
 const Button = styled.button`
   ${BaseButton}
   border-bottom: 1px solid ${primary.primary1};
-  margin: 0 0.5rem;
 
   :hover, :active {
     color: ${primary.primary3};

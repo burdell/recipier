@@ -3,23 +3,19 @@ import Link from 'next/link';
 
 import { LinkButton } from '../Button';
 
-import { HeaderStyles, AppName } from './styles';
+import { HeaderStyles, AppName, HeaderActions } from './styles';
 
 const Header = () => (
   <HeaderStyles>
-    <div>
+    <AppName>
       <Link href="/">
-        <a>
-          <AppName>recipier</AppName>
-        </a>
+        <a>recipier</a>
       </Link>
-    </div>
+    </AppName>
 
-    <div>
+    <HeaderActions>
       <LinkButton href="/create">create</LinkButton>
-      <LinkButton href="/create">import</LinkButton>
-      <LinkButton href="/create">calendar</LinkButton>
-    </div>
+    </HeaderActions>
   </HeaderStyles>
 );
 

@@ -17,6 +17,7 @@ export const Button = styled.button`
   ${BaseButton}
   border-radius: 5px;
   box-shadow: 0px 0px 0px 1px ${grays.gray7};
+  background-color: #fff;
 
   :hover {
     box-shadow: 0px 0px 1px 1px ${primary.primary8};

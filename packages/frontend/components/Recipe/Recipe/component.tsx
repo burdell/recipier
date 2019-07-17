@@ -1,17 +1,22 @@
 import React from 'react';
 import Link from 'next/link';
+import styled from '@emotion/styled';
 
 import { Button } from '../../Button';
 import { GetRecipeRecipe } from '../../generated/Graphql';
+import { secondary } from '../../../design/colors';
+import { Section } from '../Section';
 
-import {
-  Title,
-  Section,
-  RecipeContainer,
-  SectionHeader,
-  RecipeActions,
-  PageContainer
-} from '../styles';
+const NotesSection = styled.div`
+  background-color: ${secondary.secondary9};
+  color: ${secondary.secondary1};
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid ${secondary.secondary5};
+  display: inline-block;
+`;
+
+import { Title, RecipeContainer, RecipeActions } from '../styles';
 
 interface Props {
   recipe: GetRecipeRecipe;
@@ -20,7 +25,7 @@ interface Props {
 
 export const Recipe = ({ recipe, onDelete }: Props) => {
   return (
-    <PageContainer>
+    <>
       <RecipeActions>
         <Link href="/edit/[id]" as={`/edit/${recipe.id}`}>
           <Button>edit</Button>
@@ -29,39 +34,21 @@ export const Recipe = ({ recipe, onDelete }: Props) => {
       </RecipeActions>
       <RecipeContainer>
         <Title>{recipe.name}</Title>
+
+        {recipe.notes.length > 0 && (
+          <NotesSection>
+            <Section title="Notes" items={recipe.notes} />
+          </NotesSection>
+        )}
+
         {recipe.ingredients.length > 0 && (
-          <Section>
-            <SectionHeader>Ingedients</SectionHeader>
-            <ul>
-              {recipe.ingredients.map(ingredient => (
-                <li key={ingredient}>{ingredient}</li>
-              ))}
-            </ul>
-          </Section>
+          <Section title="Ingredients" items={recipe.ingredients} />
         )}
 
         {recipe.steps.length > 0 && (
-          <Section>
-            <SectionHeader>Steps</SectionHeader>
-            <ol>
-              {recipe.steps.map(step => (
-                <li key={step}>{step}</li>
-              ))}
-            </ol>
-          </Section>
-        )}
-
-        {recipe.notes.length > 0 && (
-          <Section>
-            <SectionHeader>Notes</SectionHeader>
-            <ul>
-              {recipe.notes.map(note => (
-                <li key={note}>{note}</li>
-              ))}
-            </ul>
-          </Section>
+          <Section title="Steps" items={recipe.steps} />
         )}
       </RecipeContainer>
-    </PageContainer>
+    </>
   );
 };

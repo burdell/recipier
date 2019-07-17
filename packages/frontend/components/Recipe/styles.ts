@@ -1,19 +1,21 @@
 import styled from '@emotion/styled';
 
-export const PageContainer = styled.div`
-  display: flex;
-`;
+import { grays } from '../../design/colors';
+import { leftColumn, mainContent } from '../Layout/styles';
 
 export const RecipeContainer = styled.div`
-  width: 60%;
-  margin: 0 auto;
-  flex: 9;
+  ${mainContent}
+  max-width: 900px;
 `;
 
 export const RecipeActions = styled.div`
+  ${leftColumn}
   width: 100%;
-  flex: 1;
-  margin-right: 6rem;
+  margin-right: 0.5rem;
+  background-color: ${grays.gray9};
+  border: 1px solid ${grays.gray8};
+  border-radius: 10px;
+  padding: 1rem;
 
   button {
     width: 100%;
@@ -23,20 +25,23 @@ export const RecipeActions = styled.div`
 
 export const Title = styled.h1`
   font-size: 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 `;
 
 export const Section = styled.div`
-  margin-bottom: 1.5rem;
+  border-radius: 10px;
 
-  ul,
-  ol {
-    padding-left: 4rem;
-    line-height: 1.5;
+  ol,
+  li {
+    list-style-position: inside;
+    padding-left: 1.5rem;
   }
 `;
 
 export const SectionHeader = styled.div`
   font-size: 2rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
 `;
+
+export const SectionItem = styled.div``;

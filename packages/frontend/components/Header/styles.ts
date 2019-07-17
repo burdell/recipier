@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
 
 import { primary, tertiary } from '../../design/colors';
+import { leftColumn, mainContent } from '../Layout/styles';
 
 export const HeaderStyles = styled.div`
-  font-family: 'Kameron';
+  font-family: 'Spectral';
 
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
   color: ${primary.primary1};
-  padding: 0 0.5rem;
+  margin-bottom: 1rem;
 
   a {
     text-decoration: none;
@@ -17,9 +17,12 @@ export const HeaderStyles = styled.div`
 `;
 
 export const AppName = styled.h1`
-  display: inline-block;
-  font-size: 4rem;
-  padding: 0 1rem;
+  ${leftColumn}
+  font-size: 3.5rem;
   border-bottom: 1px solid ${tertiary.tertiary4};
-  margin-right: 1rem;
+  text-align: center;
+`;
+
+export const HeaderActions = styled.div`
+  ${mainContent}
 `;

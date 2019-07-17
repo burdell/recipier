@@ -14,7 +14,7 @@ const Layout = (props: Props) => (
   <Fragment>
     <Head>
       <link
-        href="https://fonts.googleapis.com/css?family=Kameron|Raleway"
+        href="https://fonts.googleapis.com/css?family=Spectral|Raleway"
         rel="stylesheet"
       />
       <title>recipier</title>
