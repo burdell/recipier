@@ -1,20 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import styled from '@emotion/styled';
 
 import { Button } from '../../Button';
 import { GetRecipeRecipe } from '../../generated/Graphql';
-import { secondary } from '../../../design/colors';
 import { Section } from '../Section';
-
-const NotesSection = styled.div`
-  background-color: ${secondary.secondary9};
-  color: ${secondary.secondary1};
-  border-radius: 10px;
-  padding: 1rem;
-  border: 1px solid ${secondary.secondary5};
-  display: inline-block;
-`;
 
 import { Title, RecipeContainer, RecipeActions } from '../styles';
 
@@ -36,9 +25,7 @@ export const Recipe = ({ recipe, onDelete }: Props) => {
         <Title>{recipe.name}</Title>
 
         {recipe.notes.length > 0 && (
-          <NotesSection>
-            <Section title="Notes" items={recipe.notes} />
-          </NotesSection>
+          <Section title="Notes" items={recipe.notes} />
         )}
 
         {recipe.ingredients.length > 0 && (
@@ -46,7 +33,7 @@ export const Recipe = ({ recipe, onDelete }: Props) => {
         )}
 
         {recipe.steps.length > 0 && (
-          <Section title="Steps" items={recipe.steps} />
+          <Section title="Steps" type="number" items={recipe.steps} />
         )}
       </RecipeContainer>
     </>

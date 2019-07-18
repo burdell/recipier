@@ -103,8 +103,9 @@ export const RecipeForm = ({ recipe, onSave, onCancel }: Props) => {
         {steps && (
           <div>
             <Section
-              title="steps"
+              title="Steps"
               items={steps}
+              type="number"
               renderItem={(step, i) => (
                 <input
                   defaultValue={step}
