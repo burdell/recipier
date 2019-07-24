@@ -1,4 +1,4 @@
-import { ReactNode, Fragment } from 'react';
+import React, { ReactNode, Fragment } from 'react';
 import { Global } from '@emotion/core';
 import Head from 'next/head';
 

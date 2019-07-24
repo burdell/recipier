@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Title, RecipeContainer, RecipeActions } from './styles';
+
 import { Button } from '../Button';
+import { Input } from '../Input';
+
+import { Title, RecipeContainer, RecipeActions } from './styles';
 import { Recipe } from './types';
 import { Section } from './Section';
 
@@ -43,7 +46,7 @@ export const RecipeForm = ({ recipe, onSave, onCancel }: Props) => {
       </RecipeActions>
       <RecipeContainer>
         <Title>
-          <input
+          <Input
             defaultValue={name || ''}
             onChange={e => mergeUpdates({ name: e.target.value })}
             placeholder="Recipe name"
@@ -56,7 +59,7 @@ export const RecipeForm = ({ recipe, onSave, onCancel }: Props) => {
               title="Notes"
               items={notes}
               renderItem={(note, i) => (
-                <input
+                <Input
                   defaultValue={note}
                   placeholder="Add a note"
                   onChange={e => {
@@ -79,7 +82,7 @@ export const RecipeForm = ({ recipe, onSave, onCancel }: Props) => {
               title="Ingredients"
               items={ingredients}
               renderItem={(ingredient, i) => (
-                <input
+                <Input
                   defaultValue={ingredient}
                   placeholder="Add an ingredient"
                   onChange={e => {
@@ -107,7 +110,7 @@ export const RecipeForm = ({ recipe, onSave, onCancel }: Props) => {
               items={steps}
               type="number"
               renderItem={(step, i) => (
-                <input
+                <Input
                   defaultValue={step}
                   placeholder="Add a step"
                   onChange={e => {
